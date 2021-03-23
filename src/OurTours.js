@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import style from './css/ourTours.module.css'
+import './css/ourTours.css'
 
 export default function OurTours() {
   const [tourData, setTourData] = useState([]);
@@ -25,14 +25,15 @@ export default function OurTours() {
     fetchTourData();
   }
 
-  return <div className={`${style.container} ${style.flexContainer} ${style.flexColumn} ${style.alignCenter}`}>
-    <Header
-      tourData={tourData}
-      isLoading={isLoading}
-      siteRefresh={siteRefresh}
+  return <div styleName="`$container" $flexContainer" $flexColumn" $alignCenter"`}>
+    < Header
+  tourData = { tourData }
+  isLoading = { isLoading }
+  siteRefresh = { siteRefresh }
     />
 
-    {tourData.map((tour) => (
+  {
+    tourData.map((tour) => (
       <CardDisplay
         key={tour.id}
         id={tour.id}
@@ -42,23 +43,29 @@ export default function OurTours() {
         info={tour.info}
         removeCard={removeCard}
       />
-    ))}
+    ))
+  }
   </div >
 };
 
 function Header({ tourData, isLoading, siteRefresh }) {
-  return <header className={`${style.siteHeader} ${style.flexContainer} ${style.flexColumn} ${style.alignCenter}`}>
-    {isLoading
-      ? <p> Loading...</p>
+  return <header styleName="`$siteHeader" $flexContainer" $flexColumn
+} $alignCenter"`
+}>
+{
+  isLoading
+    ?<p> Loading...</p>
       : tourData.length === 0
-        ? <p>No Tours Left</p>
-        : <p>Our Tours</p>}
+  ? <p>No Tours Left</p>
+  : <p>Our Tours</p>}
 
-    <div className={style.siteHeader__underline}></div>
+<div styleName="siteHeader__underline"></div>
 
-    {tourData.length === 0 && (
-      <button className={style.siteHeader__refresh} onClick={siteRefresh}> Refresh </button>
-    )}
+{
+  tourData.length === 0 && (
+    <button styleName="siteHeader__refresh" onClick={siteRefresh} > Refresh </button >
+  )
+}
   </header >
 }
 
@@ -70,25 +77,27 @@ function CardDisplay(props) {
     setReadmMoreClicked((prev) => (prev === true ? false : true));
   }
 
-  return <article className={`${style.tourCard} ${style.flexContainer} ${style.flexColumn} ${style.alignCenter}`}>
-    <img src={props.image} alt="" className={style.tourCard__image} />
+  return <article styleName="`$tourCard" $flexContainer" $flexColumn" $alignCenter"`
+}>
+  < img src={props.image} alt="" styleName= tourCard__image" />
 
-    <header className={style.flexContainer}>
-      <p className={style.tourCard__title}> {props.name}</p>
-      <p className={style.tourCard__price}>${props.price}</p>
-    </header>
+    < header styleName = flexContainer
+}>
+  <p styleName="tourCard__title"> {props.name}</p>
+      <p styleName="tourCard__price"> ${props.price}</p >
+    </header >
 
-    <p className={style.tourCard__summary}>
-      {readMoreClicked ? props.info : shortInfo + "..."}
+  <p styleName="tourCard__summary}>
+    {readMoreClicked ? props.info : shortInfo + "..."}
 
-      <button className={style.tourCard__readMore} onClick={showReadMore}>
-        {readMoreClicked ? "Show Less" : "Read More"}
+  < button styleName = "tourCard__readMore" onClick = { showReadMore } >
+    { readMoreClicked? "Show Less": "Read More" }
       </button >
     </p >
 
-    <button
-      className={style.tourCard__notInterested}
-      onClick={() => props.removeCard(props.id)}
-    > Not Interested </button >
+  <button
+    styleName="tourCard__notInterested"
+    onClick={() => props.removeCard(props.id)}
+  > Not Interested </button >
   </article >
 }

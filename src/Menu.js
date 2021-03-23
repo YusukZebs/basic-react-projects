@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import style from "./css/menu.module.css"
+import "./css/menu.css"
 import menuData from "./Menu-data"
 
 function Menu() {
@@ -11,7 +11,7 @@ function Menu() {
   }, [])
 
   function categoryButtonClick(category) {
-    currCategory.classList.remove(style.navbar__button_clicked)
+    currCategory.classList.remove("navbar__button_clicked")
     if (category === undefined) {
       setCategoryData(prev => menuData);
       setCurrCategory(prev => document.getElementById("all"))
@@ -21,11 +21,11 @@ function Menu() {
       setCurrCategory(prev => document.getElementById(`${category}`))
     }
 
-    setCurrCategory(prev => { prev.classList.add(style.navbar__button_clicked); return prev })
+    setCurrCategory(prev => { prev.classList.add("navbar__button_clicked"); return prev })
   }
 
   return (
-    <div className={style.menu}>
+    <div styleName="menu">
       <Header />
       <Navbar
         categoryButtonClick={categoryButtonClick}
@@ -35,15 +35,16 @@ function Menu() {
 
       <ItemList currView={categoryData} />
 
-    </div>
+    </div >
   )
 }
 
 function Header() {
-  return <header className={style.header}>
-    <h2 className={style.header__text}>Our Menu</h2>
-    <div className={style.header__underline}></div>
-  </header>
+  return <header styleName="header">
+    < h2 styleName=" header__text"
+    > Our Menu</h2 >
+    <div styleName="header__underline"></div>
+  </header >
 }
 
 function Navbar(props) {
@@ -56,49 +57,55 @@ function Navbar(props) {
     }
   })
 
-  return <nav className={style.navbar}>
-    <button
+  return <nav styleName="navbar">
+    < button
       id="all"
-      className={`${style.navbar__button} ${style.navbar__button_clicked}`}
-      onClick={() => props.categoryButtonClick()}
-    >All</button>
+      styleName="navbar__button navbar__button_clicked"
+      onClick={() => props.categoryButtonClick()
+      }
+    > All</button >
 
-    {categories.map(category => (
-      <button
-        key={category}
-        id={category}
-        className={style.navbar__button}
-        onClick={() => (props.categoryButtonClick(category))}
-      >{category}</button>
-    ))}
-  </nav>
+    {
+      categories.map(category => (
+        <button
+          key={category}
+          id={category}
+          styleName="navbar__button"
+          onClick={() => (props.categoryButtonClick(category))}
+        > { category}</button >
+      ))
+    }
+  </nav >
 }
 
 function ItemList(props) {
 
   return (
-    <main className={style.itemList}>
-      {props.currView.map(item => (
-        <Item key={item.id} item={item} />
-      ))}
-    </main>
+    <main styleName="itemList">
+      {
+        props.currView.map(item => (
+          <Item key={item.id} item={item} />
+        ))
+      }
+    </main >
   )
 
   function Item({ item }) {
 
     return (
 
-      <article className={style.item} >
-        <img src={item.img} className={style.item__img} alt="" />
+      <article styleName="item" >
+        < img src={item.img} styleName="item__img" alt="" />
 
-        <section className={style.item__section}>
-          <header className={style.item__header}>
-            <p className={style.item__title}>{item.title}</p>
-            <p className={style.item__price}>${item.price}</p>
-          </header>
-          <p className={style.item__desc}>{item.desc}</p>
-        </section>
-      </article>
+        < section styleName="item__section">
+          < header styleName="item__header">
+            < p styleName="item__title"> {item.title}</p >
+            < p styleName="item__price"
+            > ${item.price}</p >
+          </header >
+          <p styleName="item__desc">{item.desc}</p>
+        </section >
+      </article >
     )
   }
 

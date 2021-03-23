@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import appData from './App-data'
 
-import app from "./css/app.module.css"
+import "./css/app.css"
 
 const App = () => {
   const [CurrViewProject, setCurrViewProject] = useState(() => appData[0].component);
@@ -11,25 +11,27 @@ const App = () => {
     setCurrViewProject(prev => appData[id].component)
   }
 
-  return <div className={app.container}>
-    <div className={app.buttonsContainer}>
+  return <div styleName="container">
+    <div styleName="buttonsContainer">
 
-      {appData.map((project) =>
-        <button
-          key={project.id}
-          onClick={
-            () => viewProject(project.id)
-          }
-          className={app.button}
-        >{project.name}</button>
-      )}
-    </div>
+      {
+        appData.map((project) =>
+          <button
+            key={project.id}
+            onClick={
+              () => viewProject(project.id)
+            }
+            styleName="button"
+          >{project.name}</button>
+        )
+      }
+    </div >
 
-    <main className={app.projectContainer}>
+    <main styleName="projectContainer">
 
       <CurrViewProject />
     </main>
-  </div>
+  </div >
 };
 
 export default App;

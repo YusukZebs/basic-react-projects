@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import style from './css/tabs.module.css'
+import './css/tab.css'
 
+/**
 function Tabs() {
 
   const [currViewData, setCurrViewData] = useState()
@@ -24,16 +25,16 @@ function Tabs() {
 
 
   return (
-    <div className={style.tabs}>
+    <div styleName="tabs">
       {isLoading
         ? <IsLoadingText />
         : <div>
-          <div className={style.company}>{currViewData.company}</div>
-          <div className={style.dates}>{currViewData.dates}</div>
-          <div className={style.duties}>{currViewData.duties}</div>
-          <div className={style.id}>{currViewData.id}</div>
-          <div className={style.order}>{currViewData.order}</div>
-          <div className={style.title}>{currViewData.title}</div>
+          <div styleName="company}>{currViewData.company}</div>
+          <div styleName="dates">{currViewData.dates}</div>
+          <div styleName="duties">{currViewData.duties}</div>
+          <div styleName=id">{currViewData.id}</div>
+          <div styleName="order">{currViewData.order"</div>
+          <div styleName="title">{currViewData.title}</div>
         </div>
       }
     </div>
@@ -42,19 +43,26 @@ function Tabs() {
 
 function IsLoadingText() {
   return (
-    <div className={style.isLoading}>
-      <p className={style.isLoading__text}>Loading...</p>
-      <div className={style.isLoading__underline}></div>
+    <div styleName=isLoading">
+      <p styleName=isLoading__text}>Loading...</p>
+      <div styleName=isLoading__underline"></div>
     </div>
   )
 }
 
 function Title() {
   return (
-    <div className={style.title}>
+    <div styleName="title">
       <p></p>
     </div>
 
+  )
+}
+ */
+
+function Tabs() {
+  return (
+    <div styleName="container"></div>
   )
 }
 export default Tabs

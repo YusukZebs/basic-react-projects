@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import style from './css/birthdayReminder.module.css'
+import './css/birthdayReminder.css'
 import bdayReminderData from './BirthdayReminder-data'
 
 const BirthdayReminder = () => {
@@ -9,32 +9,33 @@ const BirthdayReminder = () => {
     setPeople((prev) => []);
   }
 
-  return <div className={style.container}>
+  return <div styleName="container">
 
-    <main className={style.blockDisplay}>
-      <header className={style.header}>
+    < main styleName="blockDisplay"
+    >
+      <header styleName="header">
         {people.length} birthdays today
-      </header>
+      </header >
       {
         people.map((person) => (
-          <div key={person.id} className={style.personBlock}>
-            <img src={`${person.image}`} alt="" className={style.personBlock__image} />
+          <div key={person.id} styleName="personBlock" >
+            <img src={`${person.image}`} alt="" styleName="personBlock__image" />
 
-            <span className={style.personBlock__text}>
-              <h3 className={style.personBlock__name}>{person.name}</h3>
-              <h5 className={style.personBlock__age}>{person.age} years</h5>
-            </span>
-          </div>
+            < span styleName="personBlock__text">
+              < h3 styleName="personBlock__name">{person.name}</h3>
+              < h5 styleName="personBlock__age">{person.age} years</h5>
+            </span >
+          </div >
         ))
       }
 
-      <div className={style.btnContainer}>
-        < button className={style.button} onClick={clearAll}>
+      <div styleName="btnContainer">
+        < button styleName="button" onClick={clearAll} >
           Clear All
-    </button>
+    </button >
       </div >
     </main >
-  </div>
+  </div >
 };
 
 export default BirthdayReminder
